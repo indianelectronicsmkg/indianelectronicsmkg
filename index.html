@@ -508,7 +508,7 @@
 }
 
 .category-card img {
-    width: 100%;
+    width: 200%;
     height: auto;
     border-radius: 5px;
 }
@@ -562,8 +562,8 @@ document.addEventListener('DOMContentLoaded', function() {
         sliderTrack.style.transform = `translateX(${currentPosition}px)`;
     }
 
-    document.querySelector('.prev').addEventListener('click', () => moveSlider('prev'));
-    document.querySelector('.next').addEventListener('click', () => moveSlider('next'));
+    document.querySelector('.prev').addEventListener('click', () => moveSlider('next'));
+    document.querySelector('.next').addEventListener('click', () => moveSlider('prev'));
 });
 </script>
     
