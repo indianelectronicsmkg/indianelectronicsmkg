@@ -462,31 +462,110 @@
         </div>
     </section>
 
-    <section class="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Categories</h2>
-           </div>
-            <div class="category-grid">
-                <div class="category-card">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5de59cf-02ba-4236-bc9f-5fec113c8be8.png" alt="Modern flat-screen televisions on display in a showroom with various sizes and brands">
-                    <h3>Televisions</h3>
-                </div>
-                <div class="category-card">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/47c7c358-f70f-44ee-96f0-f0441e1af768.png" alt="Split air conditioning units installed on clean white walls in a modern home setting">
-                    <h3>Air Conditioners</h3>
-                </div>
-                <div class="category-card">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/650183d4-d06b-4763-8b37-5cbcf3fb72c6.png" alt="Portable air coolers lined up in a row with different colors and models available">
-                    <h3>Coolers</h3>
-                </div>
-                <div class="category-card">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3dc1b82a-866e-4f5c-bbe8-daeaee43d80e.png" alt="Latest refrigerator models with double doors and stainless steel finishes in a kitchen">
-                    <h3>Refrigerators</h3>
-                </div>
-            </div>
+    <div class="category-slider">
+    <button class="slider-control prev">◀</button>
+    <div class="slider-track">
+        <div class="category-card">
+            <img src="path/to/tv-category.jpg" alt="TV Category">
+            <h3>Televisions</h3>
         </div>
-    </section>
+        <div class="category-card">
+            <img src="path/to/fridge-category.jpg" alt="Refrigerator Category">
+            <h3>Refrigerators</h3>
+        </div>
+        <div class="category-card">
+            <img src="path/to/ac-category.jpg" alt="Air Conditioner Category">
+            <h3>Air Conditioners</h3>
+        </div>
+        <div class="category-card">
+            <img src="path/to/cooler-category.jpg" alt="Cooler Category">
+            <h3>Coolers</h3>
+        </div>
+    </div>
+    <button class="slider-control next">▶</button>
+</div>
+
+<style>
+.category-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.category-card {
+    width: 200px;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.category-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.category-card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.slider-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.slider-control:hover {
+    background-color: rgba(0,0,0,0.7);
+}
+
+.slider-control.prev {
+    left: 10px;
+}
+
+.slider-control.next {
+    right: 10px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderTrack = document.querySelector('.slider-track');
+    const cards = document.querySelectorAll('.category-card');
+    const totalWidth = cards.length * 220; // 220 = card width + margin
+    let currentPosition = 0;
+
+    function moveSlider(direction) {
+        if (direction === 'next') {
+            currentPosition -= 220;
+            if (currentPosition <= -(totalWidth - 800)) currentPosition = 0;
+        } else {
+            currentPosition += 220;
+            if (currentPosition >= 0) currentPosition = -(totalWidth - 800);
+        }
+        sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+    }
+
+    document.querySelector('.prev').addEventListener('click', () => moveSlider('prev'));
+    document.querySelector('.next').addEventListener('click', () => moveSlider('next'));
+});
+</script>
     
     <section class="product-section">
     <h2 class="section-title">Our Products</h2>
