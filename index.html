@@ -500,6 +500,7 @@
 
 .category-card {
     width: 2000px;
+    length: 2000px;
     margin-right: 20px;
     border: 1px solid #ddd;
     padding: 10px;
@@ -548,7 +549,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const sliderTrack = document.querySelector('.slider-track');
     const cards = document.querySelectorAll('.category-card');
-    const totalWidth = cards.length * 2200; // 220 = card width + margin
+    const totalWidth = cards.length * 220; // 220 = card width + margin
     let currentPosition = 0;
 
     function moveSlider(direction) {
