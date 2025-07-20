@@ -489,7 +489,7 @@
     </section>
     
     <section class="product-section">
-    <h2>Our Products</h2>
+    <h2 class="section-title">Our Products</h2>
     <div class="product-grid">
         <div class="product-card">
             <img src="path/to/tcl-tv.jpg" alt="TCL Smart LED TV">
@@ -521,6 +521,45 @@
         </div>
     </div>
 </section>
+
+<style>
+.product-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.product-card {
+    width: 200px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+</style>
     
     <section class="about-section">
         <div class="container">
