@@ -508,7 +508,7 @@
 }
 
 .category-card img {
-    width: 200%;
+    width: 100%;
     height: auto;
     border-radius: 5px;
 }
@@ -542,6 +542,24 @@
 .slider-control.next {
     right: 10px;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-slider {
+        max-width: 100%;
+    }
+    
+    .category-card {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .slider-track {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 </style>
 
 <script>
@@ -562,6 +580,31 @@ document.addEventListener('DOMContentLoaded', function() {
         sliderTrack.style.transform = `translateX(${currentPosition}px)`;
     }
 
+    // Touch events for mobile
+    let startX = 0;
+    let currentX = 0;
+
+    sliderTrack.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+    });
+
+    sliderTrack.addEventListener('touchmove', function(e) {
+        currentX = e.touches[0].clientX;
+        const diffX = startX - currentX;
+        sliderTrack.style.transform = `translateX(${diffX}px)`;
+    });
+
+    sliderTrack.addEventListener('touchend', function() {
+        if (currentX - startX > 50) {
+            moveSlider('next');
+        } else if (startX - currentX > 50) {
+            moveSlider('prev');
+        } else {
+            sliderTrack.style.transform = `translateX(${currentPosition}px)`;
+        }
+    });
+
+    // Click events for desktop
     document.querySelector('.prev').addEventListener('click', () => moveSlider('next'));
     document.querySelector('.next').addEventListener('click', () => moveSlider('prev'));
 });
