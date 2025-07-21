@@ -472,19 +472,19 @@
     <div class="slider-track">
         <div class="category-card">
             <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5de59cf-02ba-4236-bc9f-5fec113c8be8.png" alt="TV Category">
-         <h3>Televisions</h3>
+            <h3>Televisions</h3>
         </div>
         <div class="category-card">
             <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3dc1b82a-866e-4f5c-bbe8-daeaee43d80e.png" alt="Refrigerator Category">
-         <h3>Refrigerators</h3>
+            <h3>Refrigerators</h3>
         </div>
         <div class="category-card">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/47c7c358-f70f-44ee-96f0-f0441e1af768.png" alt="Air Conditioner Category">
-         <h3>AC</h3>
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/47c7c358-f70f-44ee-96f0-f0441e1af768.png" alt="AC Category">
+            <h3>Air Conditioners</h3>
         </div>
         <div class="category-card">
             <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/650183d4-d06b-4763-8b37-5cbcf3fb72c6.png" alt="Cooler Category">
-         <h3>Coolers</h3>
+            <h3>Coolers</h3>
         </div>
     </div>
     <button class="slider-control next">▶</button>
@@ -505,23 +505,23 @@
 
 .category-card {
     width: 100%;
-    max-width: 300px; /* Increased width */
-    margin-right: 20px;
+    max-width: 320px; /* Increased width */
+    margin-right: 30px; /* Increased spacing */
     border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .category-card img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .category-card h3 {
-    margin-top: 10px;
-    font-size: 18px;
+    margin-top: 15px;
+    font-size: 20px;
     color: #333;
 }
 
@@ -532,7 +532,7 @@
     background-color: rgba(0,0,0,0.5);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
     z-index: 1;
 }
@@ -542,11 +542,11 @@
 }
 
 .slider-control.prev {
-    left: 10px;
+    left: 15px;
 }
 
 .slider-control.next {
-    right: 10px;
+    right: 15px;
 }
 
 /* Responsive Design */
@@ -557,8 +557,9 @@
     
     .category-card {
         width: 100%;
+        max-width: 320px; /* Increased width */
         margin-right: 0;
-        margin-bottom: 20px;
+        margin-bottom: 30px; /* Increased spacing */
     }
     
     .slider-track {
@@ -573,15 +574,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const sliderTrack = document.querySelector('.slider-track');
     const cards = document.querySelectorAll('.category-card');
-    const totalWidth = cards.length * 220; // 220 = card width + margin
+    const totalWidth = cards.length * 350; // 350 = card width + margin
     let currentPosition = 0;
 
     function moveSlider(direction) {
         if (direction === 'next') {
-            currentPosition -= 220;
+            currentPosition -= 350;
             if (currentPosition <= -(totalWidth - 800)) currentPosition = 0;
         } else {
-            currentPosition += 220;
+            currentPosition += 350;
             if (currentPosition >= 0) currentPosition = -(totalWidth - 800);
         }
         sliderTrack.style.transform = `translateX(${currentPosition}px)`;
