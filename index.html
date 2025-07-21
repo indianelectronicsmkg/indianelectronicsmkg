@@ -479,8 +479,8 @@
             <h3>Refrigerators</h3>
         </div>
         <div class="category-card">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/47c7c358-f70f-44ee-96f0-f0441e1af768.png" alt="AC Category">
-            <h3>Air Conditioners</h3>
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/47c7c358-f70f-44ee-96f0-f0441e1af768.png" alt="Air Conditioner Category">
+            <h3>AC</h3>
         </div>
         <div class="category-card">
             <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/650183d4-d06b-4763-8b37-5cbcf3fb72c6.png" alt="Cooler Category">
@@ -505,8 +505,8 @@
 
 .category-card {
     width: 100%;
-    max-width: 320px; /* Increased width */
-    margin-right: 30px; /* Increased spacing */
+    max-width: 250px; /* Reduced width */
+    margin-right: 20px;
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 8px;
@@ -515,13 +515,14 @@
 
 .category-card img {
     width: 100%;
-    height: auto;
+    height: 250px; /* Square image */
+    object-fit: cover;
     border-radius: 8px;
 }
 
 .category-card h3 {
     margin-top: 15px;
-    font-size: 20px;
+    font-size: 18px;
     color: #333;
 }
 
@@ -557,9 +558,9 @@
     
     .category-card {
         width: 100%;
-        max-width: 320px; /* Increased width */
+        max-width: 250px; /* Reduced width */
         margin-right: 0;
-        margin-bottom: 30px; /* Increased spacing */
+        margin-bottom: 20px;
     }
     
     .slider-track {
@@ -574,15 +575,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const sliderTrack = document.querySelector('.slider-track');
     const cards = document.querySelectorAll('.category-card');
-    const totalWidth = cards.length * 350; // 350 = card width + margin
+    const totalWidth = cards.length * 270; // 270 = card width + margin
     let currentPosition = 0;
 
     function moveSlider(direction) {
         if (direction === 'next') {
-            currentPosition -= 350;
+            currentPosition -= 270;
             if (currentPosition <= -(totalWidth - 800)) currentPosition = 0;
         } else {
-            currentPosition += 350;
+            currentPosition += 270;
             if (currentPosition >= 0) currentPosition = -(totalWidth - 800);
         }
         sliderTrack.style.transform = `translateX(${currentPosition}px)`;
