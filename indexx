@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Edge - Year in Review</title>
+    <style>
+        /* CSS for styling and animations */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0078d4, #005a9e);
+            color: white;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 50px 0;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: fadeIn 2s ease-in;
+        }
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 50px 0;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1s ease-out;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #00bcff;
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        button {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Microsoft Edge - Year in Review</h1>
+            <p>Here's a look back at your browsing year.</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-card" id="time-card">
+                <h3>Total Time Spent</h3>
+                <p id="total-time">Calculating...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="time-progress"></div>
+                </div>
+            </div>
+            <div class="stat-card" id="sites-card">
+                <h3>Top Sites Visited</h3>
+                <ul id="top-sites"></ul>
+            </div>
+            <div class="stat-card" id="productivity-card">
+                <h3>Productivity Score</h3>
+                <p id="productivity-score">Calculating...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="productivity-progress"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button onclick="refreshStats()">Refresh Stats</button>
+            <button onclick="shareReview()">Share Your Review</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for dynamic content and interactions
+        function generateMockData() {
+            const totalTime = Math.floor(Math.random() * 1000) + 500; // Mock hours
+            const topSites = ['google.com', 'youtube.com', 'github.com', 'stackoverflow.com', 'microsoft.com'];
+            const productivity = Math.floor(Math.random() * 100) + 1; // Mock score out of 100
+            
+            return { totalTime, topSites, productivity };
+        }
+        
+        function displayStats() {
+            const data = generateMockData();
+            
+            // Update total time
+            document.getElementById('total-time').textContent = `${data.totalTime} hours`;
+            const timeProgress = document.getElementById('time-progress');
+            timeProgress.style.width = `${(data.totalTime / 1500) * 100}%`; // Animate to percentage
+            
+            // Update top sites
+            const sitesList = document.getElementById('top-sites');
+            sitesList.innerHTML = '';
+            data.topSites.forEach(site => {
+                const li = document.createElement('li');
+                li.textContent = site;
+                sitesList.appendChild(li);
+            });
+            
+            // Update productivity
+            document.getElementById('productivity-score').textContent = `${data.productivity}/100`;
+            const prodProgress = document.getElementById('productivity-progress');
+            prodProgress.style.width = `${data.productivity}%`;
+        }
+        
+        function refreshStats() {
+            displayStats();
+        }
+        
+        function shareReview() {
+            alert('Sharing your Year in Review! (In a real app, this would open a share dialog.)');
+        }
+        
+        // Initialize on page load
+        window.onload = displayStats;
+    </script>
+</body>
+</html>
